@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highcharts Example</title>
+
+		<script type="text/javascript" src="../../../../jquery.min.js"></script>
+		<style type="text/css">
+${demo.css}
+		</style>
+				<style type="text/css">
+.chart {
+    min-width: 320px;
+    height: 150px;
+    margin: 0 auto;
+}
+</style>
+		<script type="text/javascript">
+$(function () {
+	 $('<div class="chart">')
+     .appendTo('#container')
+     .highcharts({
+
+         chart: {
+             type: 'heatmap',
+            // marginTop: 40,
+            // marginBottom: 80,
+             plotBorderWidth: 1
+         },
+
+
+         title: {
+             text: 'Sales per employee per weekday'
+         },
+
+         xAxis: {
+             categories: ['2014', '2015']
+         },
+
+         yAxis: {
+             categories: [''],
+             title: null
+         },
+
+
+         legend: {
+         	enabled : false,
+             align: 'right',
+             layout: 'vertical',
+             margin: 0,
+             verticalAlign: 'top',
+             y: 25,
+             symbolHeight: 280
+         },
+
+         tooltip: {
+             formatter: function () {
+                 return '<b>' + this.series.xAxis.categories[this.point.x] + '</b> sold <br><b>' +
+                     this.point.value + '</b> items on <br><b>' + this.series.yAxis.categories[this.point.y] + '</b>';
+             }
+         },
+
+         series: [{
+             name: 'Sales per employee',
+             borderWidth: 1,
+             data: [[0, 0, '<table><tr><td>1</td><td>2</td><td>3</td></tr></table>'], [1, 0, '2015']],
+             dataLabels: {
+                 enabled: true,
+                 color: '#000000'
+             }
+         }]
+
+     });
+	 
+	 
+});
+		</script>
+	</head>
+	<body>
+<script src="../../js/highcharts.js"></script>
+<script src="../../js/modules/heatmap.js"></script>
+<script src="../../js/modules/exporting.js"></script>
+
+
+<div id="container" style="height: 400px; min-width: 310px; max-width: 800px; margin: 0 auto"></div>
+	</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highcharts Example</title>
+
+		<script type="text/javascript" src="../../common/jquery.min.js"></script>
+		<script src="../../common/highcharts/4.1.10/js/highcharts.js"></script>
+		<script src="../../common/highcharts/4.1.10/js/highcharts-3d.js"></script>
+		<script src="../../common/highcharts/4.1.10/js/modules/exporting.js"></script>
+		
+		<style type="text/css">
+${demo.css}
+		</style>
+		<script type="text/javascript">
+$(function () {
+	Highcharts.setOptions({  
+		   lang: {  
+			   	resetZoom : '还原',
+				exportButtonTitle : "图形菜单",
+				downloadJPEG : "下载JPEG图片",
+				downloadPDF:"下载PDF文档",
+				downloadPNG:"下载PNG图片",
+				downloadSVG:"下载SVG矢量图",
+				printChart:"打印图片",
+				contextButtonTitle : "图形菜单",
+				printButtonTitle:"打印图片"
+		   },
+		   colors: ['#058DC7', '#50B432', '#ED561B', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+	});
+    $('#container').highcharts({
+        chart: {
+            type: 'pie',
+            backgroundColor:  {
+                linearGradient: [0, 0, 500, 500],
+                stops: [
+                    [0, 'rgb(255, 255, 255)'],
+                    [1, 'rgb(200, 200, 255)']
+                ]
+            },
+            borderColor:"#4572A7",
+            borderRadius : 10,
+            borderWidth : 1,
+            className: null,
+            events:{
+            	addSeries:function(){
+            		
+            	},
+            	click: function(event) {
+            		
+            	},
+            	drilldown: function (e) {
+                    if (!e.seriesOptions) {
+                    	
+                   	}
+                },
+                drillup: function (e) {
+                    if (!e.seriesOptions) {
+                    	
+                   	}
+                },
+                load: function () {
+                	
+                }
+            },
+            height:null,
+            width: null,
+            inverted: false,
+            //margin : [10,20, 30, 40],
+            options3d: {
+                enabled: true,
+                alpha: 45,
+                beta: 0
+            }
+        },
+        credits:{
+        	enabled: false//copyright
+        },
+        exporting:{
+        	buttons:{
+        		contextButton:{
+        			align : "right",
+        			enabled : true,
+        			verticalAlign : "top",
+        			width: 24,
+        			height : 20
+        		}
+        	},
+        	enabled:true,
+        	filename : "chart",
+       		url: "http://export.highcharts.com"//,
+			//sourceWidth : 1000,
+			//sourceHeight : 600
+        },
+        legend:{
+        	enabled : true,
+        	align : "center",
+        	verticalAlign : "bottom",
+        	backgroundColor : null,
+        	borderColor : "#909090",
+        	borderRadius : 5,
+        	borderWidth : 1,
+        	floating : false,
+        	itemDistance : 20,
+        	itemHiddenStyle :{
+        		
+        	},
+        	itemHoverStyle:{
+        		
+        	},
+        	itemStyle: {
+                 color: '#000000',
+                 fontWeight: 'bold'
+            },
+            layout: "horizontal",//horizontal,vertical
+        	title:{
+        		style:{
+        			
+        		},
+        		text:null
+        	},
+        	x:0,
+        	y:0
+        },
+        title: {
+        	//align: "center",
+        	//verticalAlign : null,
+        	//floating: false,
+        	//margin:0,
+            text: 'Browser market shares at a specific website, 2014'//,
+            //x:null,
+            //y:null
+        },
+        tooltip: {
+        	animation:true,
+        	enabled: true,
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>',
+            backgroundColor: {
+                linearGradient: [0, 0, 0, 60],
+                stops: [
+                    [0, '#FFFFFF'],
+                    [1, '#000000']
+                ]
+            },
+            borderColor: null, 
+           	borderRadius:10,
+       		borderWidth:1,
+   			valuePrefix: null,
+			valuePrefix: null,
+			valueDecimals: 2
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                depth: 35,
+                dataLabels: {
+               	   	enabled: true,
+                    format: '{point.name}'
+                },
+                showInLegend: true,
+                startAngle: 0,
+                endAngle: 360
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Browser share',
+            data: [
+                ['Firefox', 45.0],
+                ['IE', 26.8],
+                {
+                    name: 'Chrome',
+                    y: 12.8,
+                    sliced: true,
+                    selected: true
+                },
+                ['Safari', 8.5],
+                ['Opera', 6.2],
+                ['Others', 0.7]
+            ]
+        }]
+    });
+});
+		</script>
+	</head>
+	<body>
+<div id="container" style="height: 400px"></div>
+	</body>
+</html>
